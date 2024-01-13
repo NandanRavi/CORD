@@ -90,8 +90,22 @@ def home(request):
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    context = {'room':room}
+    room_messages = room.message_set.all().order_by('-created')
+    particpants = room.participants.all()
+
+
+    if request.method == "POST":
+        message = Message.objects.create(
+            user = request.user,
+            room = room,
+            body = request.POST.get('body')
+        )
+        room.participants.add(request.user)
+        return redirect('room', pk=room.id)
+
+    context = {'room':room, 'room_messages':room_messages, 'particpants':particpants}
     return render(request,'base/room.html', context)
+
 
 @login_required(login_url='login')
 def create_Room(request):
@@ -120,6 +134,8 @@ def update_Room(request,pk):
 
     context = {'form':form}
     return render(request, 'base/room_form.html', context)
+
+
 @login_required(login_url='login')
 def delete_Room(request, pk):
     room = Room.objects.get(id=pk)
@@ -131,4 +147,18 @@ def delete_Room(request, pk):
         room.delete()
         return redirect('home')
     context = {'obj':room}
+    return render(request, 'base/delete.html', context)
+
+
+@login_required(login_url='login')
+def delete_Message(request, pk):
+    message = Message.objects.get(id=pk)
+
+    if request.user != message.user:
+        return HttpResponse('Chal be Nikal Idhar se')
+
+    if request.method == "POST":
+        message.delete()
+        return redirect('home')
+    context = {'obj':message}
     return render(request, 'base/delete.html', context)
