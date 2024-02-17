@@ -9,30 +9,6 @@
 <a href="{% url 'login' %}">Login</a>
 {% endif %}
 
-<nav>
-    <div class="brand">
-        <h3>MyBrand</h3>
-    </div>
-    <div class="navigation">
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Team</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="search">
-            <div class="search-content">
-                <button class="search-button"><i class="fa fa-search"></i></button>
-                <input type="text" class="search-input" placeholder="Search here...">
-            </div>
-        </div>
-    </div>
-</nav>
-
-
-
-
-
 
 <form action="{% url "home" %}" method="GET">
     <input type="text" name="q" placeholder='Search Rooms...' />
@@ -45,14 +21,3 @@
 
 
 
-<script>
-    function toggleNavbar() {
-        var x = document.getElementById("myNavbar");
-        if (x.className === "navbar") {
-            x.className += " responsive";
-        } else {
-            x.className = "navbar";
-        }
-    }
-    
-</script>
