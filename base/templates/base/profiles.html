@@ -1,0 +1,12 @@
+{% extends "main.html" %}
+{% load static %}
+{% block content %}
+    {% for profile in profiles %}
+    <div>
+        <h3>
+            <a href="{% url "user-profile" profile.id %}"  class='zero'>@{{profile.username}}</a>
+        </h3>
+    </div>
+    {% endfor %}
+
+{% endblock content %}

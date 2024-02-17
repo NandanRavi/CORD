@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+<div>
+    <a href="{% url "home" %}">Home Page</a>
+</div>
+
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div>
+            <label for="">{{field.label}}</label>
+            {{field}}
+        </div>
+    {% endfor %}
+
+
+    <div>
+        <a href="{{request.META.HTTP_REFERER}}">Cancel</a>
+        <button type="submit">Update-User</button>
+    </div>
+</form>
+
+
+{% endblock content %}

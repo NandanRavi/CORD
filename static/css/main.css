@@ -1,0 +1,26 @@
+/* Home Page*/
+.home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+}
+
+
+
+/* Profile Page */
+.profile-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+
+
+/* Room Page */
+.room-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+
+.zero {
+    border: 2px solid black;
+}

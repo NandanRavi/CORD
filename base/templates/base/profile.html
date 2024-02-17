@@ -1,13 +1,11 @@
 {% extends "main.html" %}
 
 {% block content %}
-    <style>
-        .profile-container{
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-        }3
-    </style>
-    <h1>{{user.username}}</h1>
+
+    <h3>This is {{user.username}} account</h3>
+    {% if request.user == user %}
+        <a href="{% url "update-user" %}">Edit Profile</a>
+    {% endif %}
     <div class='profile-container'>
         <div>
             {% include "base/topics_component.html" %}

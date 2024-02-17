@@ -17,8 +17,8 @@
                 <br>
                 <input type="submit" value="Login">
             </form>
-            <p>Hamare se Jud na Sochta kya hai??</p>
-            <a href="{% url "register" %}">SignUp</a>
+            <p>Register Yourself!!!!<a href="{% url "register" %}">SignUp</a></p>
+            
         </div>
     {% else %}
         <div>    
@@ -27,8 +27,8 @@
                 {{form.as_p}}
                 <input type="submit" value="SignUp">
             </form>
-            <p>Hamare se Jud gaya hai toh Login kar na</p>
-            <a href="{% url "login" %}">Login</a>
+            <p>Login to your account<a href="{% url "login" %}">Login</a></p>
+            
         </div>
 
     {% endif %}

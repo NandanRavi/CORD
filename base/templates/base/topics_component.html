@@ -1,13 +1,19 @@
-<h3>Browse Topics</h3>
-            <hr>
-            <div>
-                <a href="{% url "home" %}">All</a>
-            </div>
+<div>
+    <div>
+        <h3>Browse Topics</h3>
+    </div>
+    <hr>
+    <div>
+        <a href="{% url "home" %}">All <span>{{topics.count}}</span> </a>
+        
+        {% for topic in topics %}
+        
+        <div>
+            <a href="{% url "home" %}?q={{topic.name}}">{{topic}}<span>{{topic.room_set.all.count}}</span></a>
+        </div>
+        
+        {% endfor %}
+    </div>
 
-            {% for topic in topics %}
-            
-                <div>
-                    <a href="{% url "home" %}?q={{topic.name}}">{{topic}}</a>
-                </div>
-            
-            {% endfor %}
+    <a href="{% url "topics" %}">More</a>
+</div>

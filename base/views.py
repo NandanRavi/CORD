@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import Room, Topic, Message
 from django.contrib.auth.decorators import login_required
-from .forms import RoomForm
+from .forms import RoomForm, UserForm
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -23,17 +23,17 @@ def loginPage(request):
         try:
             user = User.objects.get(username=username)
         except:
-            messages.error(request, "Tu kon hai be")
+            messages.error(request, "Please Check your Username.")
 
         user = authenticate(request, username=username, password=password)
 
 
         if user is not None:
             login(request, user)
-            messages.success(request, 'Swagat hai Bidu Tera')
+            messages.success(request, 'We Welcome you on Our App')
             return redirect('home')
         else:
-            messages.error(request, 'Password Galat nhi Daalne ka')
+            messages.error(request, 'Password is wrong....')
     
     context = {'page':page}
     return render(request, 'base/login_register.html', context)
@@ -50,7 +50,7 @@ def registerUser(request):
         if form.is_valid():
             username = request.POST['Username'].lower()
             if User.objects.filter(username=username).exists():
-                form.add_error('Username', 'Naam Chori mat kar Panga ho jaayega')
+                form.add_error('Username', 'Username Already Exist!!!')
             else:
                 user = form.save(commit=False)
                 user.username = username
@@ -63,7 +63,7 @@ def registerUser(request):
             # login(request, user)
             # return redirect('home')
         else:
-            messages.error(request, 'Zaldi hai kahi jaane ka hai Nahi toh Aaram se register kar')
+            messages.error(request, "Don't have an account Register Yourself!!!")
 
     context = {'form':form}
     return render(request, 'base/login_register.html', context)
@@ -81,12 +81,20 @@ def home(request):
         Q(name__icontains=q) |
         Q(description__icontains=q)
     )
-    topics = Topic.objects.all()
+    topics = Topic.objects.all()[0:5]
     room_count = rooms.count
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
 
     context = {'rooms':rooms, 'topics':topics, 'room_count':room_count, 'room_messages':room_messages}
     return render(request,'base/home.html', context)
+
+
+def profiles(request):
+    profiles = User.objects.all()
+    context = {'profiles':profiles}
+    return render(request, 'base/profiles.html', context)
+
+
 
 
 def room(request, pk):
@@ -121,18 +129,20 @@ def userProfile(request, pk):
 
 
 @login_required(login_url='login')
-def create_Room(request):
+def createRoom(request):
     form = RoomForm()
     if request.method == "POST":
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
     context = {'form':form}
     return render(request, 'base/room_form.html', context)
 
 @login_required(login_url='login')
-def update_Room(request,pk):
+def updateRoom(request,pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
 
@@ -150,7 +160,7 @@ def update_Room(request,pk):
 
 
 @login_required(login_url='login')
-def delete_Room(request, pk):
+def deleteRoom(request, pk):
     room = Room.objects.get(id=pk)
 
     if request.user != room.host:
@@ -164,7 +174,7 @@ def delete_Room(request, pk):
 
 
 @login_required(login_url='login')
-def delete_Message(request, pk):
+def deleteMessage(request, pk):
     message = Message.objects.get(id=pk)
 
     if request.user != message.user:
@@ -175,3 +185,23 @@ def delete_Message(request, pk):
         return redirect('home')
     context = {'obj':message}
     return render(request, 'base/delete.html', context)
+
+
+@login_required(login_url='login')
+def updateUser(request):
+    user = request.user
+    form = UserForm(instance=user)
+    if request.method == "POST":
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user-profile', pk=user.id)
+
+    context = {'form':form}
+    return render(request, 'base/update_user.html', context)
+
+
+def topicsPage(request):
+    topics = Topic.objects.filter()
+    context = {'topics':topics}
+    return render(request, 'base/topics.html', context)
