@@ -1,3 +1,7 @@
+{% comment %} <div>
+    <h3>LOGO</h3>
+</div>
+
 <a href="{% url "home" %}">Home</a>
 <a href="{% url "profiles" %}">Profiles</a>
 
@@ -7,15 +11,32 @@
 <a href="{% url "logout" %}">Logout</a>
 {% else %}
 <a href="{% url 'login' %}">Login</a>
-{% endif %}
+{% endif %} {% endcomment %}
 
+<nav class="navbar">
+    <div class="logo">
+        <h3>CORD</h3>
+    </div>
+    <div class="search-container">
+        <form action="{% url "home" %}" method="GET">
+            <input class="input-class" type="text" name="q" placeholder='Search Rooms...' />
+        </form>
+    </div>
+    <ul>
+        <li><a href="{% url "home" %}">Home</a></li>
+        <li><a href="{% url "profiles" %}">Profiles</a></li>
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url "update-user" %}">UpdateUser</a></li>
+            <li><a href="{% url "logout" %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+    </ul>
+</nav>
 
-<form action="{% url "home" %}" method="GET">
-    <input type="text" name="q" placeholder='Search Rooms...' />
-</form>
-<hr>
-<hr>
 {% if request.user.is_authenticated %}
+    <hr>
+    <hr>
     <p>Hello {{request.user}}</p>
 {% endif %}
 
