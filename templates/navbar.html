@@ -22,7 +22,7 @@
             <input class="input-class" type="text" name="q" placeholder='Search Rooms...' />
         </form>
     </div>
-    <ul>
+    <ul class="nav-list">
         <li><a href="{% url "home" %}">Home</a></li>
         <li><a href="{% url "profiles" %}">Profiles</a></li>
         {% if request.user.is_authenticated %}
@@ -34,11 +34,9 @@
     </ul>
 </nav>
 
-{% if request.user.is_authenticated %}
-    <hr>
-    <hr>
+{% comment %} {% if request.user.is_authenticated %}
     <p>Hello {{request.user}}</p>
-{% endif %}
+{% endif %} {% endcomment %}
 
 
 

@@ -4,17 +4,20 @@
 
 
     <div class='home-container'>
-        <div>
+        <div class="line container-1">
             {% include "base/topics_component.html" %}
         </div>
 
-        <div>
-            <h5>{{room_count}} rooms available</h5>
-            <a href="{% url "create-room" %}">Create Room</a>
+        <div class="line container-2">
+            <div class="topic-head">
+                <h3>{{room_count}} Rooms Available</h3>
+            </div>
+            <a class="create-room" href="{% url "create-room" %}">CREATE ROOM</a>
+            <hr>
             {% include "base/feed_component.html" %}
         </div>
 
-        <div>
+        <div class="line container-3">
             {% include "base/activity_component.html" %}
         </div>
 

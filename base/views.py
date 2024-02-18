@@ -30,7 +30,8 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            messages.success(request, 'We Welcome you on Our App')
+            author = str(request.user)
+            messages.success(request, f'{author.upper()} We Welcome you on Our App')
             return redirect('home')
         else:
             messages.error(request, 'Password is wrong....')
@@ -178,7 +179,7 @@ def deleteMessage(request, pk):
     message = Message.objects.get(id=pk)
 
     if request.user != message.user:
-        return HttpResponse('Chal be Nikal Idhar se')
+        return HttpResponse('You are not Authorised')
 
     if request.method == "POST":
         message.delete()
