@@ -30,7 +30,7 @@
 
 .nav-list li {
     margin: 0 0.5rem;
-    
+
 }
 
 .nav-list a {
@@ -56,18 +56,19 @@
 }
 
 
-.input-class{
+.input-class {
     padding: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     border: 2px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
     color: #333;
-    outline: none; /* Remove the default outline */
+    outline: none;
+    /* Remove the default outline */
     transition: border-color 0.3s;
 }
 
-.input-class:focus{
+.input-class:focus {
     border-color: #007bff;
 }
 
@@ -81,6 +82,7 @@
     }
 
 }
+
 /* Navbar CSS complete */
 
 
@@ -95,22 +97,22 @@
     border-radius: 5px;
 }
 
-.line{
+.line {
     margin: 20px;
     background-color: #699FA2;
     border-radius: 20px;
 
 }
 
-.container-1{
+.container-1 {
     box-shadow: 0px 5px 10px 0px;
 }
 
-.container-2{
+.container-2 {
     box-shadow: 0px 5px 8px 0px;
 }
 
-.create-room{
+.create-room {
     text-decoration: none;
     padding: 5px 14px 5px 16px;
     color: black;
@@ -118,37 +120,38 @@
     background-color: #908f8f;
 }
 
-.container-3{
+.container-3 {
     box-shadow: 0px 5px 6px 0px;
 }
+
 /* Home page css */
 
 
 
 /* topics component */
 
-.topic-head{
+.topic-head {
     display: flex;
     justify-content: center;
-    
+
 }
 
-.topic-count{
+.topic-count {
     display: grid;
     place-items: center;
 }
 
-.topic-count li{
+.topic-count li {
     list-style: none;
     padding: 3px;
 }
 
-.topic-count a{
+.topic-count a {
     text-decoration: none;
     color: #1b1a1a;
 }
 
-.topic-count a:hover{
+.topic-count a:hover {
     padding: 5px;
     font-weight: 700;
     background-color: #b7e7ed;
@@ -156,11 +159,13 @@
     transition: all 0.2s ease-in-out;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
+
 /* Topics component css */
 
-/* Activity feed */
 
-.alpha{
+
+/* Activity feed */
+.alpha {
     padding: 10px;
     border-radius: 5px;
 }
@@ -172,13 +177,6 @@
 .feed-list a {
     margin-right: 10px;
     text-decoration: none;
-    color: #333;
-}
-
-.feed-list a[href^="@"] {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
 }
 
 .feed-list h5 a {
@@ -189,6 +187,56 @@
 .feed-list small {
     color: #fff;
 }
+
+/* Activity CSS */
+
+
+
+
+
+/* Recent Activity */
+.activity {
+    margin-bottom: 20px;
+    padding: 0px 20px;
+}
+
+.activity small {
+    color: #423e3e;
+    margin-right: 10px;
+}
+
+.activity small a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.activity small:last-child {
+    display: block;
+    margin-top: 5px;
+}
+
+.activity p {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.activity a[href^="@"] {
+    text-decoration: none;
+    color: #dc3545;
+    /* Bootstrap's danger color */
+    margin-right: 10px;
+}
+
+.activity hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+/* Recent Activiy CSS */
+
+
+
 
 
 
@@ -207,6 +255,122 @@
 }
 
 
-.zero {
-    border: 2px solid black;
+
+
+
+/* Login Page */
+
+.log-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
 }
+
+.login-form {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px;
+}
+
+.name {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.pixel {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.txt {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sign {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+
+
+
+/* Signup Page */
+.sign-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f2f2f2;
+}
+
+.sign-page form {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px;
+}
+
+.sign-page label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.sign-page input[type="text"],
+input[type="password"],
+input[type="email"] {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.sign-page input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-page p {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.sign-page a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+
+
+
+
+
+/* Sign Up CSS */
