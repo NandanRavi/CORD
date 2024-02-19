@@ -339,8 +339,8 @@ input[type="submit"] {
 }
 
 .sign-page input[type="text"],
-input[type="password"],
-input[type="email"] {
+.sign-page input[type="password"],
+.sign-page input[type="email"] {
     display: block;
     width: 90%;
     padding: 10px;
@@ -368,9 +368,55 @@ input[type="email"] {
     text-decoration: none;
 }
 
-
-
-
-
-
 /* Sign Up CSS */
+
+
+/* Update User */
+.update-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background-color: #f2f2f2;
+}
+.update-label form {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    width: 300px;
+}
+
+.update-label label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.update-label input[type="email"],
+input[type="text"] {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+
+.update-label a{
+    text-decoration: none;
+    padding: 2px;
+    background: #1f2020;
+    color: #FBC32E;
+    border-radius: 5px;
+}
+
+.btn{
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

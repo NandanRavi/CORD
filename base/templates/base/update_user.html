@@ -2,26 +2,24 @@
 {% block content %}
 
 
-<div>
-    <a href="{% url "home" %}">Home Page</a>
-</div>
+<div class="update-label">
 
-<form action="" method="POST">
-    {% csrf_token %}
-
-    {% for field in form %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
         <div>
             <label for="">{{field.label}}</label>
             {{field}}
         </div>
-    {% endfor %}
+        {% endfor %}
+        
+        
+        <div>
+            <a href="{{request.META.HTTP_REFERER}}">Cancel</a>
+            <button class="btn" type="submit">Update-User</button>
+        </div>
+    </form>
 
-
-    <div>
-        <a href="{{request.META.HTTP_REFERER}}">Cancel</a>
-        <button type="submit">Update-User</button>
-    </div>
-</form>
-
+</div>
 
 {% endblock content %}
