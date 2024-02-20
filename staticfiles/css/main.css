@@ -49,12 +49,15 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.search-container {
-    padding-left: 35%;
+.search-container{
     flex-grow: 1;
     position: relative;
 }
 
+.search-container form{
+    padding: 10px 20px 0px 40%;
+    width: 30%;
+}
 
 .input-class {
     padding: 10px;
