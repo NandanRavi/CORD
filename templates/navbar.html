@@ -18,9 +18,11 @@
         <h3>CORD</h3>
     </div>
     <div class="search-container">
-        <form action="{% url "home" %}" method="GET">
-            <input class="input-class" type="text" name="q" placeholder='Search Rooms...' />
-        </form>
+        <div class="box">
+            <form action="{% url "home" %}" method="GET">
+                <input class="input-class" type="text" name="q" placeholder='Search Rooms...' />
+            </form>
+        </div>
     </div>
     <ul class="nav-list">
         <li><a href="{% url "home" %}">Home</a></li>

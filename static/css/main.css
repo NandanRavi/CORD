@@ -38,6 +38,7 @@
     font-size: 1.2rem;
     text-decoration: none;
     padding: 0.3rem 0.6rem;
+    
 }
 
 .nav-list a:hover {
@@ -46,7 +47,8 @@
     background-color: #ddd;
     color: #046169;
     transition: all 0.2s ease-in-out;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 1px 1px 1px 1px;
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); */
 }
 
 .search-container{
@@ -75,16 +77,6 @@
     border-color: #007bff;
 }
 
-@media only screen and (max-width: 910px) {
-    .navbar {
-        flex-direction: column;
-    }
-
-    .search-container {
-        padding: 10px 0px;
-    }
-
-}
 
 /* Navbar CSS complete */
 
@@ -93,8 +85,8 @@
 
 /* Home Page*/
 .home-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    display: flex;
+    justify-content: center;
     background-color: #6750A4;
     margin-top: 2px;
     border-radius: 5px;
@@ -104,8 +96,27 @@
     margin: 20px;
     background-color: #699FA2;
     border-radius: 20px;
-
+    border: 3px solid pink;
+    width: 30%;
+    height: 80vh;
 }
+
+.create-room {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 5px 16px;
+    color: black;
+    width: 25%;
+    margin-left: 35%;
+    background-color: #908f8f;
+    box-shadow: 0px 0px 0px 0.3px;
+}
+
+.create-room:hover{
+    box-shadow: 1px 1px 1px 1px;
+}
+
 
 .container-1 {
     box-shadow: 0px 5px 10px 0px;
@@ -115,17 +126,12 @@
     box-shadow: 0px 5px 8px 0px;
 }
 
-.create-room {
-    text-decoration: none;
-    padding: 5px 14px 5px 16px;
-    color: black;
-    margin-left: 42%;
-    background-color: #908f8f;
-}
-
 .container-3 {
     box-shadow: 0px 5px 6px 0px;
 }
+
+
+
 
 /* Home page css */
 
@@ -136,7 +142,13 @@
 .topic-head {
     display: flex;
     justify-content: center;
+    
+}
 
+
+.topic-form label{
+    font-size: 20px;
+    font-family: sans-serif;
 }
 
 .topic-count {
@@ -226,7 +238,6 @@
 .activity a[href^="@"] {
     text-decoration: none;
     color: #dc3545;
-    /* Bootstrap's danger color */
     margin-right: 10px;
 }
 
@@ -254,9 +265,13 @@
 /* Room Page */
 .room-container {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns:3fr 1fr;
+    margin-top: 5px;
 }
 
+.alo{
+    border-left: 2px dotted black;
+}
 
 
 
@@ -423,3 +438,74 @@ input[type="text"] {
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+
+/* Media Queries */
+@media screen and (max-width: 1300px){
+    .create-room {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 5px 10px 5px 16px;
+        color: black;
+        font-size: 70%;
+        width: 25%;
+        box-shadow: 1px 1px 1px 1px;
+        margin-left: 35%;
+        background-color: #908f8f;
+    }
+}
+
+@media only screen and (max-width: 910px) {
+    .navbar {
+        flex-direction: column;
+    }
+    
+    .search-container {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .box{
+        width: 400px;
+        padding-right: 30px;
+    }
+    
+    
+}
+
+@media screen and (max-width: 445px) {
+    .nav-list a{
+        font-size: 0.8rem;
+    }
+
+    .create-room{
+        font-size: 55%;
+        box-shadow: 1px 1px 1px 1px;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    .home-container {
+        flex-direction: column;
+        align-items: center;
+        height: 60%;
+    }
+
+    .line {
+        width: 80%;
+    }
+    .container-1{
+        height: 280px;
+    }
+
+    .container-2{
+        height: 350px;
+    }
+
+    .container-3{
+        display: none;
+    }
+}
+

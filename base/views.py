@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from .models import Room, Topic, Message
 from django.contrib.auth.decorators import login_required
-from .forms import RoomForm, UserForm
+from .forms import RoomForm, UserForm, TopicForm
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -49,7 +49,8 @@ def registerUser(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            username = request.POST['Username'].lower()
+            profile_name = request.POST.get('username')
+            username = profile_name.lower()
             if User.objects.filter(username=username).exists():
                 form.add_error('Username', 'Username Already Exist!!!')
             else:
@@ -85,7 +86,6 @@ def home(request):
     topics = Topic.objects.all()[0:5]
     room_count = rooms.count
     room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
-
     context = {'rooms':rooms, 'topics':topics, 'room_count':room_count, 'room_messages':room_messages}
     return render(request,'base/home.html', context)
 
@@ -141,6 +141,22 @@ def createRoom(request):
             return redirect('home')
     context = {'form':form}
     return render(request, 'base/room_form.html', context)
+
+
+@login_required(login_url='login')
+def createTopic(request):
+    form = TopicForm()
+    if request.method == "POST":
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            topic = form.save(commit=False)
+            topic.host = request.user
+            topic.save()
+            return redirect('topics')
+
+    context = {'form':form}
+    return render(request, 'base/topics_form.html', context)
+
 
 @login_required(login_url='login')
 def updateRoom(request,pk):

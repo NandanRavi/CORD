@@ -9,18 +9,19 @@
     <title>Cord</title>
 </head>
 <body>
-    
-    {% include "navbar.html" %}
-    {% if messages %}
+    <div class="main-container">
+        {% include "navbar.html" %}
+        {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                <li>{{ message }}</li>
+            <li>{{ message }}</li>
             {% endfor %}
         </ul>
-    {% endif %}
-    {% block content %}
-    
-    
-    {% endblock content %}
+        {% endif %}
+        {% block content %}
+        
+        
+        {% endblock content %}
+    </div>
 </body>
 </html>

@@ -5,6 +5,11 @@
 
     <div class='home-container'>
         <div class="line container-1">
+            <div class='topic-head'>
+                <h3>Browse Topics</h3>
+            </div>
+            <a class="create-room" href="{% url "create-topic" %}">CREATE TOPIC</a>
+            <hr>
             {% include "base/topics_component.html" %}
         </div>
 
@@ -20,8 +25,6 @@
         <div class="line container-3">
             {% include "base/activity_component.html" %}
         </div>
-
-
 
     </div>
 
