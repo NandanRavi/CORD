@@ -13,7 +13,7 @@ class TopicForm(ModelForm):
         model = Topic
         fields = ['name']
         labels = {
-            'name':'Create Room'
+            'name':'Create Topic'
         }
 
 

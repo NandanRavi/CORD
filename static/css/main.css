@@ -101,21 +101,33 @@
     height: 80vh;
 }
 
-.create-room {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 5px 10px 5px 16px;
-    color: black;
-    width: 25%;
-    margin-left: 35%;
-    background-color: #908f8f;
-    box-shadow: 0px 0px 0px 0.3px;
+
+.box1{
+    padding: 3px;
+    border-bottom: 2px dotted black;
+    -webkit-box-shadow: -5px 10px 19px -6px rgba(0,0,0,0.4);
+    -moz-box-shadow: -5px 10px 19px -6px rgba(0,0,0,0.4);
+    box-shadow: -5px 10px 10px -6px rgba(0,0,0,0.4);
 }
 
-.create-room:hover{
-    box-shadow: 1px 1px 1px 1px;
+.center{
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center;
 }
+
+.btn1{
+    padding: 8px;
+    background-color: #706a6a;
+    box-shadow: 2px 1px 2px 0px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.btn1:hover {
+    box-shadow: 2px 3px 2px 0px;
+}
+
 
 
 .container-1 {
@@ -124,6 +136,15 @@
 
 .container-2 {
     box-shadow: 0px 5px 8px 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex1{
+    flex: 1;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-top: 70px;
 }
 
 .container-3 {
@@ -181,8 +202,7 @@
 
 /* Activity feed */
 .alpha {
-    padding: 10px;
-    border-radius: 5px;
+    padding-left: 20px;
 }
 
 .feed-list {
